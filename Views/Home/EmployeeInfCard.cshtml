@@ -1,0 +1,96 @@
+﻿@model TestProject.Models.EmployeeModel
+@{
+    ViewBag.Title = " صفحة بيانات الموظف ";
+    Layout = "_HomeLayout";
+}
+<div>
+    <div style="display:flex; margin-bottom: 8px;">
+        <a asp-controller="Home" asp-action="Index"><p style=" margin-left: 10px; margin-right: 30px; color: #F19106; font-size: 16px; "> الصفحة الرئيسية </p></a>
+        <!-- Arrow Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none" style=" margin-top: 9px;">
+            <path d="M7.41016 1.42L2.83016 6L7.41016 10.59L6.00016 12L0.000156403 6L6.00016 0L7.41016 1.42Z" fill="#F19106" />
+        </svg>
+        <p style=" margin-right: 10px; color: #78191C; font-size: 16px; ">@Model.EmployeeDetail.FullName</p>
+    </div>
+
+    <div class="SearchBox" style=" width: 1200px; height: 550px;">
+        <div class="form-group"> 
+            <div style="display: flex;">
+                <!-- Employee img -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" style="margin: 12px 49px 0px 0px;">
+                    <g clip-path="url(#clip0_316_10050)">
+                        <path d="M64.1723 39.7683C68.1853 22.2748 57.2571 4.84035 39.7636 0.827375C22.2702 -3.18559 4.83574 7.74252 0.822766 25.236C-3.1902 42.7295 7.73791 60.1639 25.2314 64.1769C42.7249 68.1899 60.1593 57.2617 64.1723 39.7683Z" fill="#B9C4E1"></path>
+                        <path d="M32.4976 45.8508C39.4789 45.8508 45.1383 38.0121 45.1383 28.3425C45.1383 18.673 39.4789 10.8342 32.4976 10.8342C25.5164 10.8342 19.8569 18.673 19.8569 28.3425C19.8569 38.0121 25.5164 45.8508 32.4976 45.8508Z" fill="white"></path>
+                        <path d="M32.302 44.7317C21.7188 44.7317 12.2595 47.2659 5.9668 51.2503C11.8531 59.5653 21.5381 64.995 32.5027 64.995C43.4674 64.995 53.0119 59.6406 58.9132 51.4259C52.6255 47.3411 43.0408 44.7317 32.307 44.7317H32.302Z" fill="white"></path>
+                        <path d="M34.4246 32.4974H30.5706C27.9045 32.4974 25.7432 34.6588 25.7432 37.3249V48.3096C25.7432 50.9757 27.9045 53.1371 30.5706 53.1371H34.4246C37.0907 53.1371 39.252 50.9757 39.252 48.3096V37.3249C39.252 34.6588 37.0907 32.4974 34.4246 32.4974Z" fill="white"></path>
+                        <path d="M21.8542 29.3361C22.2305 32.1412 21.6083 34.575 20.4642 34.7707C19.315 34.9664 18.0805 32.8488 17.6992 30.0386C17.3228 27.2335 17.9451 24.7997 19.0892 24.604C20.2383 24.4083 21.4728 26.5259 21.8542 29.3361Z" fill="white"></path>
+                        <path d="M43.1459 29.3361C42.7696 32.1412 43.3918 34.575 44.536 34.7707C45.6851 34.9664 46.9196 32.8488 47.301 30.0386C47.6773 27.2335 47.0551 24.7997 45.9109 24.604C44.7668 24.4083 43.5273 26.5259 43.1459 29.3361Z" fill="white"></path>
+                        <path d="M20.2984 27.655C19.8719 24.8498 19.4503 22.0497 19.0238 19.2446C18.8682 18.2259 18.7227 17.152 19.0941 16.1935C19.4654 15.2351 20.5543 14.4673 21.5178 14.8286C21.1314 12.8766 23.2892 11.4363 25.171 10.789C28.3224 9.70509 31.6996 9.15309 35.0016 9.57963C38.3035 10.0062 41.5302 11.4665 43.7582 13.9454C44.4608 14.7282 45.068 15.6215 45.4042 16.6201C46.0515 18.542 45.64 20.6446 45.2235 22.6268C44.8923 24.2025 44.5611 25.7832 44.2299 27.3589C44.1547 27.7202 44.0694 28.0966 43.8235 28.3726C43.432 28.8092 42.7697 28.8393 42.1825 28.8443C35.9149 28.8593 29.6472 28.8694 23.3745 28.8844C22.1953 28.8844 20.6547 28.5984 20.4991 27.4292" fill="white"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_316_10050">
+                            <rect width="65" height="65" fill="white"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h6 style="margin-top: 20px; margin-right: 15px; color: #78191C;">
+                    @Model.EmployeeDetail.FullName
+                </h6><br>
+                <div style=" display: flex; margin-top: 40px; margin-right: -65px; color: #78191C; ">
+                    <p>الرقم الوظيفي:</p>
+                    <p>@Model.EmployeeDetail.UserID</p>
+                </div>
+            </div>
+            <div style="width: 1200px; height: 0.25px; background: #A3A9AF; margin-top: 19px;"></div>
+        </div>
+        <form>
+            <div style="display:flex;">
+                <div style=" margin-right: 170px; margin-top: 20px; ">
+                    <label for="City" style="margin-bottom: 10px;">المدينة:</label><br>
+                    <input type="text" id="City" name="City" value="@Model.EmployeeDetail.City" readonly>
+                </div>
+
+                <div style=" margin-right: 170px; margin-top: 20px;">
+                    <label for="CISCO" style="margin-bottom: 10px;"> سيسكو: </label><br>
+                    <input type="text" id="CISCO" name="CISCO" value="@Model.EmployeeDetail.CISCO" readonly>
+                </div>
+            </div>
+            <div style="display:flex;">
+                <div style=" margin-right: 170px; margin-top: 20px; ">
+                    <label for="Department" style="margin-bottom: 10px;">القسم:</label><br>
+                    <input type="text" id="Department" name="Department" value="@Model.EmployeeDetail.DeptName" readonly>
+                </div>
+
+                <div style=" margin-right: 170px; margin-top: 20px; ">
+                    <label for="Email" style="margin-bottom: 10px;"> ايميل: </label><br>
+                    <input type="text" id="Email" name="Email" value="@Model.EmployeeDetail.Email" readonly>
+                </div>
+            </div>
+            <div style="display:flex;">
+                <div style=" margin-right: 170px; margin-top: 20px; ">
+                    <label for="Job_Tit" style="margin-bottom: 10px;">المسمى الوظيفي:</label><br>
+                    <input type="text" id="Job_Tit" name="Job_Tit" value="@Model.EmployeeDetail.JobTitle" readonly>
+                </div>
+
+                <div style=" margin-right: 170px; margin-top: 20px; ">
+                    <label for="Emp_no" style="margin-bottom: 10px;"> رقم الهاتف: </label><br>
+                    @if (!Model.EmployeeDetail.HidePhoneNumber)
+                    {
+                        <input type="text" id="Emp_no" name="Emp_no" value="@Model.EmployeeDetail.EmpNo" readonly>
+
+                        <br>
+                    }
+                    else
+                    {
+                        <p>الرقم مخفي</p>
+                    }
+                    
+                </div>
+            </div>
+            <div style="display:flex; justify-content: center; align-items: center; margin-top: 31px; margin-left: 53px;">
+                <button class="BackButton" asp-controller="Home" asp-action="index"> عودة </button>
+            </div>
+        </form>
+    </div>
+</div>
+<img src="~/img/box.png" alt="RCJY Pic" style="width: 460px; height: 83px; margin-left: 940px; margin-bottom: -639px; margin-top: 450px; position: inherit;">

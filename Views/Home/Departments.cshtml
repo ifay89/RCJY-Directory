@@ -1,0 +1,115 @@
+﻿@model TestProject.Models.DepartmentModel
+@{
+    ViewData["Title"] = " دليل الأقسام ";
+    Layout = "_DepartmentLayout";
+}
+<div>
+    <div class="SearchBox" style=" width: 1200px; height: 599px;">
+        <div class="form-group">
+            <form class="navbar-form navbar-left" style="margin-left: 384px; margin-top: 32px;" asp-action="SearchDepartments" method="get">
+
+                <input type="text" class="form-control" placeholder="  ابحث هنا عن القسم، القطاع  "  name="keyword" style="width: 438.056px;height: 42.849px;border-radius: 20px;margin-right: 355px; font-size: 13px;">
+                <!-- Department search icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style=" margin-top: -73px; margin-right: 763px;" id="Search">
+                    <g clip-path="url(#clip0_316_9881)">
+                        <path d="M9.41968 18.4115C9.29133 18.2879 9.08677 18.2879 8.95842 18.4115L7.97975 17.469C9.26325 15.8003 9.12688 13.4306 7.5566 11.9203C5.82989 10.2574 3.02223 10.2574 1.29552 11.9203C-0.431189 13.5832 -0.431189 16.287 1.29552 17.9499C2.8638 19.4603 5.32651 19.5935 7.05723 18.3575L8.0359 19.3C7.90755 19.4236 7.90755 19.6206 8.0359 19.7442L10.284 21.9092C10.3462 21.9671 10.4284 22.0019 10.5147 22.0019C10.6009 22.0019 10.6831 21.9691 10.7453 21.9092L11.6678 21.0208C11.7942 20.8972 11.7942 20.7002 11.6678 20.5766L9.41968 18.4115ZM6.04247 16.4918C5.15003 17.3512 3.70008 17.3512 2.80764 16.4918C1.91521 15.6323 1.91521 14.234 2.80764 13.3765C3.70008 12.5171 5.15003 12.5171 6.04247 13.3765C6.9349 14.236 6.9349 15.6323 6.04247 16.4918Z" fill="#78191C" />
+                        <path d="M10.0334 6.44491C11.4352 10.5452 15.3439 10.5394 16.7437 6.44491C17.2029 6.21122 17.6782 5.51786 17.7585 4.94425C17.8407 4.34747 17.7926 3.54982 17.1628 3.54982C17.0245 1.62426 15.9275 0 13.4407 0C10.9539 0 9.76667 1.40988 9.61224 3.54982C8.98453 3.54982 8.9364 4.34554 9.01863 4.94425C9.09884 5.51593 9.57214 6.21122 10.0334 6.44491Z" fill="#78191C" />
+                        <path d="M18.2778 9.77265L16.6915 9.45398L13.3885 15.7965L10.0855 9.45398L8.49914 9.77265C7.81928 9.90978 7.21163 10.1898 6.68018 10.5548C7.16951 10.7885 7.62074 11.0937 8.01782 11.4761C9.64626 13.0444 9.94909 15.4991 8.816 17.386L9.13487 17.6931C9.41363 17.6757 9.68236 17.7762 9.8809 17.9674L12.0849 20.0899H22V14.0313C22 11.9821 20.4497 10.2091 18.2798 9.77265H18.2778Z" fill="#78191C" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_316_9881">
+                            <rect width="22" height="22" fill="white" />
+                        </clipPath>
+                    </defs>
+
+                </svg>
+                <!-- Filter icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="19" viewBox="0 0 17 19" fill="none" style="margin-top: -118px; margin-right: 322px;">
+                    <path d="M10.0013 9V16.88C10.0413 17.18 9.94132 17.5 9.71132 17.71C9.32132 18.1 8.69132 18.1 8.30132 17.71L6.29132 15.7C6.06132 15.47 5.96132 15.16 6.00132 14.87V9H5.97132L0.211323 1.62C-0.128677 1.19 -0.0486774 0.56 0.381323 0.22C0.571323 0.08 0.781322 0 1.00132 0H15.0013C15.2213 0 15.4313 0.08 15.6213 0.22C16.0513 0.56 16.1313 1.19 15.7913 1.62L10.0313 9H10.0013Z" fill="#F19106" />
+                </svg>
+
+                <button type="submit" class="search-button btn btn-default" id="Search">
+                    <p class="search-Text">بحـث</p>
+                </button>
+
+            </form>
+        </div>
+        <div style="margin-top:-79px;">
+            <div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="150" style="margin-bottom: -10px;">
+                <div class="filter col-lg-12 d-flex justify-content-center">
+                    <ul class="no-bullets">
+                        <li><button class="active citys-List" onclick="filterByCity('all')">الكل</button></li>
+                        <li><button class="citys-List" onclick="filterByCity('Yanbu')">ينبع</button> </li>
+                        <li><button class="citys-List" onclick="filterByCity('Al Jubail')"> الجبيل </button> </li>
+                        <li><button class="citys-List" onclick="filterByCity('Jazan')"> جازان  </button> </li>
+                    </ul>
+                </div>
+                <div style="width: 1200px; height: 0.25px; background: #A3A9AF; margin-top: -45px; margin-right:12px; margin-left:12px;"></div>
+            </div>
+        </div>
+
+        <!-- Department information Box-->
+        <div style=" margin-top: -27px; display: flex; ">
+            @foreach (var item in Model.DepartmentDetailList)
+            {
+                    <div class="Emp_Inf" style="margin-right:60px;" >
+                        <div>
+                            <!-- Department img -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" style="margin: -14px 56px 134px 56px;">
+                                <g clip-path="url(#clip0_316_10462)">
+                                    <path d="M32.4975 64.995C50.4454 64.995 64.995 50.4454 64.995 32.4975C64.995 14.5496 50.4454 0 32.4975 0C14.5496 0 0 14.5496 0 32.4975C0 50.4454 14.5496 64.995 32.4975 64.995Z" fill="#B9C4E1"></path>
+                                    <path d="M38.8457 19.2446C38.4091 19.2446 38.0528 18.8783 38.0528 18.4317V15.2903C38.0528 14.091 37.0994 13.1125 35.9302 13.1125H29.0653C27.8961 13.1125 26.9427 14.091 26.9427 15.2903V18.4317C26.9427 18.8833 26.5864 19.2446 26.1498 19.2446C25.7132 19.2446 25.3569 18.8783 25.3569 18.4317V15.2903C25.3569 13.1927 27.0179 11.4866 29.0653 11.4866H35.9302C37.9725 11.4866 39.6386 13.1927 39.6386 15.2903V18.4317C39.6386 18.8833 39.2823 19.2446 38.8457 19.2446Z" fill="white"></path>
+                                    <path d="M19.4203 31.0624C19.7113 31.238 20.0475 31.3333 20.3838 31.3333H44.6063C44.9476 31.3333 45.2788 31.238 45.5698 31.0624L51.7572 27.3038V23.1638C51.7572 21.7688 50.6432 20.6246 49.2832 20.6246H15.7069C14.3469 20.6246 13.2329 21.7688 13.2329 23.1638V27.3038L19.4203 31.0624Z" fill="white"></path>
+                                    <path d="M46.3826 32.4625C45.8457 32.7887 45.2335 32.9593 44.6112 32.9593H37.3951V35.8096C37.3951 37.5609 36.0151 38.976 34.309 38.976H30.6909C28.9847 38.976 27.6047 37.5559 27.6047 35.8096V32.9593H20.3886C19.7664 32.9593 19.1542 32.7887 18.6172 32.4625L13.2378 29.1957V45.881C13.2378 47.276 14.3518 48.4202 15.7117 48.4202H49.2932C50.6531 48.4202 51.7671 47.276 51.7671 45.881V29.1957L46.3876 32.4625H46.3826Z" fill="white"></path>
+                                    <path d="M34.2487 37.2999H30.746C30.0184 37.2999 29.4263 36.6877 29.4263 35.945C29.4263 35.1973 30.0184 34.5901 30.746 34.5901H34.2487C34.9763 34.5901 35.5685 35.2023 35.5685 35.945C35.5685 36.6927 34.9763 37.2999 34.2487 37.2999Z" fill="white"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_316_10462">
+                                        <rect width="65" height="65" fill="white"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <div style="width: 160px; height: 0.5px; background: #A3A9AF;margin: -122px 8px 11px 9px;"></div>
+                            <h6 style="color: #78191C;margin-right: 34px;margin-top: 10px;">
+                                @item.DeptName
+                            </h6>
+                        </div>
+                        <div style="margin-right: 15px;">
+                            <p style="color: #F19106;">
+                                المدينة:
+                            </p>
+
+                            <p style="color: #A3A9AF;margin-top: -17px;margin-right: 10px;">
+                                -
+                            </p>
+                        </div>
+
+                        <div style="margin-right: 113px; margin-top: -62px;">
+                            <p style=" color: #F19106;">
+                                الهاتف:
+                            </p>
+
+                            <p style="color: #A3A9AF;margin-top: -17px;margin-right: 4px;">
+                                @item.DeptNo
+                            </p>
+                        </div>
+
+                        <div style="margin-top: -16px;">
+                            <p style="color: #F19106;margin-right: 65px;margin-top: -14px;">
+                                ايميل:
+                            </p>
+
+                        <p style="color: #A3A9AF;margin-top: -18px;margin-right: 35px;">
+                                @item.Email
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                }
+            </div>
+        </div>
+        <img src="~/img/box.png" alt="RCJY Pic" style="width: 460px; height: 83px; margin-left: 940px; margin-bottom: -639px; margin-top: 551px; position: inherit;">
+
+    </div>

@@ -1,0 +1,133 @@
+﻿@model TestProject.Models.EmployeeModel
+@{
+    ViewData["Title"] = " دليل الموظفين";
+    Layout = "_HomeLayout";
+}
+
+<div>
+    <div class="SearchBox" style=" width: 1200px; height: 599px;">
+        <div class="form-group">
+            <form class="navbar-form navbar-left" style="margin-left: 384px; margin-top: 32px;" asp-action="Search" method="get">
+
+                <input type="text" class="form-control" placeholder="  ابحث هنا عن الاسم، المسمى الوظيفي، القسم، القطاع  " name="keyword" style="width: 438.056px;height: 42.849px;border-radius: 20px;margin-right: 355px; font-size: 13px;">
+                <!-- employee search icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style=" margin-top: -73px; margin-right: 763px;" id="Search">
+                    <g clip-path="url(#clip0_316_9881)">
+                        <path d="M9.41968 18.4115C9.29133 18.2879 9.08677 18.2879 8.95842 18.4115L7.97975 17.469C9.26325 15.8003 9.12688 13.4306 7.5566 11.9203C5.82989 10.2574 3.02223 10.2574 1.29552 11.9203C-0.431189 13.5832 -0.431189 16.287 1.29552 17.9499C2.8638 19.4603 5.32651 19.5935 7.05723 18.3575L8.0359 19.3C7.90755 19.4236 7.90755 19.6206 8.0359 19.7442L10.284 21.9092C10.3462 21.9671 10.4284 22.0019 10.5147 22.0019C10.6009 22.0019 10.6831 21.9691 10.7453 21.9092L11.6678 21.0208C11.7942 20.8972 11.7942 20.7002 11.6678 20.5766L9.41968 18.4115ZM6.04247 16.4918C5.15003 17.3512 3.70008 17.3512 2.80764 16.4918C1.91521 15.6323 1.91521 14.234 2.80764 13.3765C3.70008 12.5171 5.15003 12.5171 6.04247 13.3765C6.9349 14.236 6.9349 15.6323 6.04247 16.4918Z" fill="#78191C" />
+                        <path d="M10.0334 6.44491C11.4352 10.5452 15.3439 10.5394 16.7437 6.44491C17.2029 6.21122 17.6782 5.51786 17.7585 4.94425C17.8407 4.34747 17.7926 3.54982 17.1628 3.54982C17.0245 1.62426 15.9275 0 13.4407 0C10.9539 0 9.76667 1.40988 9.61224 3.54982C8.98453 3.54982 8.9364 4.34554 9.01863 4.94425C9.09884 5.51593 9.57214 6.21122 10.0334 6.44491Z" fill="#78191C" />
+                        <path d="M18.2778 9.77265L16.6915 9.45398L13.3885 15.7965L10.0855 9.45398L8.49914 9.77265C7.81928 9.90978 7.21163 10.1898 6.68018 10.5548C7.16951 10.7885 7.62074 11.0937 8.01782 11.4761C9.64626 13.0444 9.94909 15.4991 8.816 17.386L9.13487 17.6931C9.41363 17.6757 9.68236 17.7762 9.8809 17.9674L12.0849 20.0899H22V14.0313C22 11.9821 20.4497 10.2091 18.2798 9.77265H18.2778Z" fill="#78191C" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_316_9881">
+                            <rect width="22" height="22" fill="white" />
+                        </clipPath>
+                    </defs>
+
+                </svg>
+                <!-- Filter icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="19" viewBox="0 0 17 19" fill="none" style="margin-top: -118px; margin-right: 322px;">
+                    <path d="M10.0013 9V16.88C10.0413 17.18 9.94132 17.5 9.71132 17.71C9.32132 18.1 8.69132 18.1 8.30132 17.71L6.29132 15.7C6.06132 15.47 5.96132 15.16 6.00132 14.87V9H5.97132L0.211323 1.62C-0.128677 1.19 -0.0486774 0.56 0.381323 0.22C0.571323 0.08 0.781322 0 1.00132 0H15.0013C15.2213 0 15.4313 0.08 15.6213 0.22C16.0513 0.56 16.1313 1.19 15.7913 1.62L10.0313 9H10.0013Z" fill="#F19106" />
+                </svg>
+
+                <button type="submit" class="search-button btn btn-default" id="Search">
+                    <p class="search-Text">بحـث</p>
+                </button>
+
+            </form>
+        </div>
+        <div style="margin-top:-79px;">
+            <div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="150" style="margin-bottom: -27px;">
+                <div class="filter col-lg-12 d-flex justify-content-center">
+                    <ul class="no-bullets">
+                        <li><button class="active citys-List" onclick="filterByCity('all')">الكل</button></li>
+                        <li><button class="citys-List" onclick="filterByCity('Yanbu')">ينبع</button> </li>
+                        <li><button class="citys-List" onclick="filterByCity('Al Jubail')"> الجبيل </button> </li>
+                        <li><button class="citys-List" onclick="filterByCity('Jazan')"> جازان  </button> </li>
+                    </ul>
+                </div>
+                <div style="width: 1200px; height: 0.25px; background: #A3A9AF; margin-top: -45px; margin-right:12px; margin-left:12px;"></div>
+            </div>
+        </div>
+
+        <!-- Employee information Box-->
+        <div style="display: -webkit-box; flex-wrap: wrap;justify-content: space-between; margin-top: 0px;margin-left: 102px;margin-right: 69px;">
+            @foreach (var item in Model.EmplDetailList)
+            {
+                <div class="Emp_Inf" style="margin-left: 28px; margin-top: 6px;" data-city="@item.City">
+                    <div>
+                        <!-- Employee img -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" style="margin: -14px 56px 134px 56px;">
+                            <g clip-path="url(#clip0_316_10050)">
+                                <path d="M64.1723 39.7683C68.1853 22.2748 57.2571 4.84035 39.7636 0.827375C22.2702 -3.18559 4.83574 7.74252 0.822766 25.236C-3.1902 42.7295 7.73791 60.1639 25.2314 64.1769C42.7249 68.1899 60.1593 57.2617 64.1723 39.7683Z" fill="#B9C4E1" />
+                                <path d="M32.4976 45.8508C39.4789 45.8508 45.1383 38.0121 45.1383 28.3425C45.1383 18.673 39.4789 10.8342 32.4976 10.8342C25.5164 10.8342 19.8569 18.673 19.8569 28.3425C19.8569 38.0121 25.5164 45.8508 32.4976 45.8508Z" fill="white" />
+                                <path d="M32.302 44.7317C21.7188 44.7317 12.2595 47.2659 5.9668 51.2503C11.8531 59.5653 21.5381 64.995 32.5027 64.995C43.4674 64.995 53.0119 59.6406 58.9132 51.4259C52.6255 47.3411 43.0408 44.7317 32.307 44.7317H32.302Z" fill="white" />
+                                <path d="M34.4246 32.4974H30.5706C27.9045 32.4974 25.7432 34.6588 25.7432 37.3249V48.3096C25.7432 50.9757 27.9045 53.1371 30.5706 53.1371H34.4246C37.0907 53.1371 39.252 50.9757 39.252 48.3096V37.3249C39.252 34.6588 37.0907 32.4974 34.4246 32.4974Z" fill="white" />
+                                <path d="M21.8542 29.3361C22.2305 32.1412 21.6083 34.575 20.4642 34.7707C19.315 34.9664 18.0805 32.8488 17.6992 30.0386C17.3228 27.2335 17.9451 24.7997 19.0892 24.604C20.2383 24.4083 21.4728 26.5259 21.8542 29.3361Z" fill="white" />
+                                <path d="M43.1459 29.3361C42.7696 32.1412 43.3918 34.575 44.536 34.7707C45.6851 34.9664 46.9196 32.8488 47.301 30.0386C47.6773 27.2335 47.0551 24.7997 45.9109 24.604C44.7668 24.4083 43.5273 26.5259 43.1459 29.3361Z" fill="white" />
+                                <path d="M20.2984 27.655C19.8719 24.8498 19.4503 22.0497 19.0238 19.2446C18.8682 18.2259 18.7227 17.152 19.0941 16.1935C19.4654 15.2351 20.5543 14.4673 21.5178 14.8286C21.1314 12.8766 23.2892 11.4363 25.171 10.789C28.3224 9.70509 31.6996 9.15309 35.0016 9.57963C38.3035 10.0062 41.5302 11.4665 43.7582 13.9454C44.4608 14.7282 45.068 15.6215 45.4042 16.6201C46.0515 18.542 45.64 20.6446 45.2235 22.6268C44.8923 24.2025 44.5611 25.7832 44.2299 27.3589C44.1547 27.7202 44.0694 28.0966 43.8235 28.3726C43.432 28.8092 42.7697 28.8393 42.1825 28.8443C35.9149 28.8593 29.6472 28.8694 23.3745 28.8844C22.1953 28.8844 20.6547 28.5984 20.4991 27.4292" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_316_10050">
+                                    <rect width="65" height="65" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <div style="width: 160px; height: 0.5px; background: #A3A9AF;margin: -122px 8px 11px 9px;"></div>
+                        <h6 style="color: #78191C; margin-right: 54px; margin-top: 10px;">
+                            @item.FullName
+                        </h6>
+                    </div>
+                    <div style="margin-top: 20px; margin-right:2px;">
+                        <!-- Email icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 12 9" fill="none" style="margin-right: 144px; margin-top: -20px;">
+                            <path d="M10.8 2.25L6 5.0625L1.2 2.25V1.125L6 3.9375L10.8 1.125M10.8 0H1.2C0.534 0 0 0.500625 0 1.125V7.875C0 8.17337 0.126428 8.45952 0.351472 8.6705C0.576515 8.88147 0.88174 9 1.2 9H10.8C11.1183 9 11.4235 8.88147 11.6485 8.6705C11.8736 8.45952 12 8.17337 12 7.875V1.125C12 0.500625 11.46 0 10.8 0Z" fill="#78191C" />
+                        </svg>
+
+                        <p style="font-size: 13px; margin-top: -30px; margin-right: 60px; color:#A3A9AF;">
+                            @item.Email
+                        </p>
+                    </div>
+                    <div style="margin-top: -2px;">
+                        <!-- Phone icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 12 11" fill="none" style="margin-right: 144px; margin-top: -20px;">
+                            <path d="M2.41333 4.76056C3.37333 6.49 4.92 7.90778 6.80667 8.78778L8.27333 7.44333C8.46 7.27222 8.72 7.22333 8.95333 7.29056C9.7 7.51667 10.5 7.63889 11.3333 7.63889C11.5101 7.63889 11.6797 7.70327 11.8047 7.81788C11.9298 7.93248 12 8.08792 12 8.25V10.3889C12 10.551 11.9298 10.7064 11.8047 10.821C11.6797 10.9356 11.5101 11 11.3333 11C8.32755 11 5.44487 9.90546 3.31946 7.95716C1.19404 6.00887 0 3.36642 0 0.611111C0 0.449034 0.0702379 0.293596 0.195262 0.17899C0.320286 0.0643847 0.489856 0 0.666667 0H3C3.17681 0 3.34638 0.0643847 3.4714 0.17899C3.59643 0.293596 3.66667 0.449034 3.66667 0.611111C3.66667 1.375 3.8 2.10833 4.04667 2.79278C4.12 3.00667 4.06667 3.245 3.88 3.41611L2.41333 4.76056Z" fill="#78191C" />
+                        </svg>
+
+                        @if (!item.HidePhoneNumber)
+                        {
+                            <p style="margin-bottom: -25px;margin-right: 60px;margin-top: -33px; color:#A3A9AF;">
+                                @item.EmpNo
+                            </p>
+                        }
+                        else
+                        {
+                            <!-- You can customize the message when the phone number is hidden -->
+                            <p style="margin-bottom: -25px;margin-right: 60px;margin-top: -33px; color:#A3A9AF;">
+                                الرقم مخفي
+                            </p>
+                        }
+                    </div>
+                    <button style="width: 72px; height: 29px; border-radius: 5px; background: #F19106; border: 1px solid #F19106; margin-top: 34px; margin-right: 49px;" onclick="location.href='@Url.Action("EmployeeInfCard", "Home", new { UserId = item.UserID })'">
+                        <p style="color: #FFF;">المزيد</p>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <img src="~/img/box.png" alt="RCJY Pic" style="width: 460px; height: 83px; margin-left: 940px; margin-bottom: -639px; margin-top: 551px; position: inherit;">
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function filterByCity(city) {
+        // Show all cards
+        $('.Emp_Inf').show();
+
+        // If the selected city is not 'all', hide cards with different city
+        if (city !== 'all') {
+            $('.Emp_Inf').not('[data-city="' + city + '"]').hide();
+        }
+    }
+</script>

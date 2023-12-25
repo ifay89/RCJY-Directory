@@ -1,0 +1,254 @@
+/* sfpro.css */
+@font-face {
+    font-family: 'SFProText';
+    src: url('/fonts/SFProText-Regular.otf') format('opentype');
+}
+
+.sf-pro-text {
+    font-family: 'SFProText', Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1415px;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 52px;
+    margin-top: -685px;
+}
+.home {
+    margin-right: 40px;
+    margin-top: -96px;
+    margin-left: -37px;
+}
+
+footer {
+     margin-left: -72px;
+    margin-top: -55px;
+}
+.Title {
+    color: #f19106;
+    font-size: 55px;
+    font-style: normal;
+    margin-bottom: 5px;
+    font-family: "SF Pro Text", sans-serif;
+    font-weight: 600;
+    line-height: 64px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-align: center;
+    margin-right: 89px;
+    margin-top: 20px;
+}
+
+.box {
+    width: 522px;
+    height: 475px;
+    border-radius: 67px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -6px;
+}
+
+#email,#password{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 396px;
+    height: 70px;
+    border-radius: 4px;
+    border: 1px solid #78191C;
+    background: #FFF;
+}
+
+input[type=submit] {
+    width: 343px;
+    height: 68px;
+    background: #F19106;
+    border: none;
+    border-radius: 20px;
+    color: #FFF;
+    font-size: 25px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin-left: 30px;
+    margin-top: 0px;
+    font-style: revert;
+    font-weight: 800;
+    line-height: normal;
+    margin-top: 10px;
+}
+}
+    input[type=submit]:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+label {
+    color: #78191C;
+    float: right;
+}
+
+.SearchBox {
+    position: absolute;
+    flex-shrink: 0;
+    border-radius: 67px;
+    background: #FFF;
+    margin: 0px 85.5px 129px 85.5px;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.25);
+}
+.search-button {
+    width: 67px;
+    height: 35px;
+    border-radius: 10px;
+    background: #78191C;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: -168px;
+    margin-right: 804px;
+}
+.search-button:hover {
+    border: 1px solid #78191C;
+}
+.search-Text {
+    display: flex;
+    width: 39px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFF;
+    text-align: center;
+    font-family: SF Pro Text;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: inherit;
+}
+.search-Text:hover {
+    color: #78191C;
+}
+
+.citys-List {
+    display: flex;
+    background: transparent;
+    border: none;
+    margin: 25px;
+    font-size: 17px;
+    outline: none;
+    position: relative;
+    transition: 0.3s;
+    padding: 10px;
+    color: #A3A9AF;
+}
+    .citys-List:before {
+        content: '';
+        border-bottom: 2px solid ;
+        padding: -10px 10px;
+        position: absolute;
+        bottom: 0;
+        transition: 0.3s;
+    }
+    .citys-List:hover:before {
+        border-bottom: 2px solid #F19106;
+        width: 100%;
+        padding: 0;
+    }
+ul.no-bullets {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 9px;
+    margin-left: 20px;
+    margin-top: -13px;
+    padding: 0;
+}
+.filter {
+    display: flex;
+    justify-content: center;
+    max-width: 1024px;
+    margin: 7px auto;
+}
+
+.Emp_Inf {
+    width: 177px;
+    height: 205px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.25);
+    
+}
+.Emp_Nm {
+    width: 96px;
+    height: 24px;
+    color: #78191C;
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 35px;
+}
+#Department, #CISCO, #Email, #City, #Emp_no, #Job_Tit {
+    width: 312.551px;
+    height: 44.901px;
+    border-radius: 5px;
+    background: #FFF;
+    border: 1px solid #FFF;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.10);
+}
+
+input[type="checkbox"] {
+    display: grid;
+    place-content: center;
+    margin-top: 5px;
+}
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        color:#f19106;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+.checkbox{
+    margin-right: 10px;
+}
+
+.SaveButton,
+.BackButton,
+.DeletButton {
+    width: 130px;
+    height: 50px;
+    border-radius: 20px;
+    color: #FFF;
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.SaveButton {
+    background: #78191C;
+    margin-left: 10px;
+}
+
+.BackButton {
+    background: #F19106;
+    margin-left: 10px;
+}
+.DeletButton {
+    background: #D20C13;
+}
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = " تسجيل الدخول ";
+}
+<div class="container">
+    <div class="home">
+        <img src="img/4.svg" alt="RCJY Pic" style="width:700px; height: 820px;">
+    </div>
+    &nbsp;
+    <div class="content">
+        <div class="Title">
+            <p class="sf-pro-text"> دليــل الأتصـالات </p>
+        </div>
+        <div class="box sf-pro-text">
+            <form method="post" style=" margin-left: -1px;" enctype="multipart/form-data" asp-controller="Login" asp-action="Index">
+                <label for="username">البريد الإلكتروني</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="password">كلمة المرور </label><br>
+                <input type="password" id="password" name="password" required><br>
+                <p style="color:#78191C;"> نسيت كلمة المرور؟ </p>
+                <input type="submit" id="myButton" value="تسجيـل الدخـول">
+            </form>
+            <div>
+                @if (!string.IsNullOrEmpty(ViewBag.Username))
+                {
+                    <p class="text-danger">@ViewBag.Username</p>
+                }
+            </div>
+        </div>
+        <img src="img/box.png" alt="RCJY Pic" style="width: 460px; height:83px; margin-left: 157px; margin-bottom: -840px; margin-top: 14px; position: inherit;">
+    </div>
+
+</div>
+
